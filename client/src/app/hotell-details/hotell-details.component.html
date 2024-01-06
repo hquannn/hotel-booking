@@ -1,0 +1,170 @@
+<section id="about" class="about mb-5 w-100">
+    <div class="container-fluid">
+
+        <div class="row gy-4 justify-content-center">
+            <div class="col-lg-6">
+                <img src="{{hotelData.image || '../../assets/image_sp/registerHotel.jpg'}}" class="img-fluid border-image" alt="">
+            </div>
+            <div class="col-lg-5 content">
+                <h2>{{hotelData.hotelName}}</h2>
+                <p class="fst-italic py-3">
+                    Chào mừng quý khách đến với khách sạn chúng tôi! Chúng tôi rất vui mừng và hân hạnh được phục vụ quý
+                    khách trong thời gian lưu trú tại khách sạn của chúng tôi.
+                </p>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <ul>
+                            <li><i class="bi bi-chevron-right"></i> <strong>Điện thoại:</strong>
+                                <span><a>{{hotelData.phone}}</a></span>
+                            </li>
+                            <li><i class="bi bi-chevron-right"></i> <strong>Nhận phòng:</strong>
+                                <span>14h chiều</span>
+                            </li>
+                            <li><i class="bi bi-chevron-right"></i> <strong>Trả phòng:</strong>
+                                <span>12h trưa</span>
+                            </li>
+                            <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong>
+                                <span>{{hotelData.email}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <ul>
+                            <li><i class="bi bi-chevron-right"></i> <strong>Đánh giá:</strong> <span>3.5/5 <i
+                                        class="bi bi-star-fill" style="color: yellow;"></i></span></li>
+                            <li><i class="bi bi-chevron-right"></i> <strong>Tiện ích:</strong> <span>Lễ tân 24h, máy
+                                    lạnh,...</span></li>
+                            
+                            <li><i class="bi bi-chevron-right"></i> <strong>Giá phòng/đêm từ:</strong> <span
+                                    style="color: orangered;">{{minPrice}} VND</span></li>
+
+                        </ul>
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+        <p class="py-3">
+            {{hotelData.address}}
+        </p>
+    </div>
+</section>
+
+<div class="section-header mt-5">
+    <h2>WELLCOME!</h2>
+    <p>Phòng của chúng tôi:</p>
+</div>
+
+<div class="w-100 d-flex justify-content-center">
+    <div id="carouselExampleControlsNoTouching" class="carousel slide w-50" data-bs-touch="false">
+        <div class="carousel-inner"> 
+            <div *ngFor="let item of listRoomData; let first = first" [ngClass]="{'carousel-item': true, 'active': first}">
+                <div class="gallery-item h-100">
+                    <img src="{{item.image || '../../assets/image_sp/registerHotel.jpg'}}" class="img-fluid" style="object-fit: cover;" alt="Ảnh phòng">
+                    <div class="gallery-links d-flex align-items-center justify-content-center">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <h4>{{item.roomName}}</h4>
+                        <p>Loại giường: {{item.roomBedType}}</p>
+                        <p>Diện tích: {{item.roomSize}} m<sup>2</sup></p>
+                        <h3 style="color: red;">{{item.price}} VND</h3>
+                    </div>
+                    <div class="col-6 d-flex justify-content-center align-items-center" *ngIf="item.isActive == true">
+                        <button class="btn btn-success" (click)="getRoomById(item)">Đặt phòng</button>
+                    </div>
+                    <div class="col-6 d-flex justify-content-center align-items-center" *ngIf="item.isActive == false">
+                        <button class="btn btn-secondary">Hết phòng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade  modal-xl" id="roomBillModal" aria-hidden="true" data-bs-backdrop="static" aria-labelledby="exampleModalToggleLabel"
+    tabindex="-1" style="color: black;">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel" style="color: black;">{{hotelData.hotelName}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="reset()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row gy-1">
+                    <div class="col-4">
+                        <label for="inputDate" class="col-sm-12 color_black">Nhận phòng</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control"  [(ngModel)]="roomBookData.checkIn" (change)="changeDate($event)">
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <label for="inputDate" class="col-sm-12 color_black">Trả phòng</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" [(ngModel)]="roomBookData.checkOut" (change)="changeDate($event)">
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <label for="inputText" class="col-sm-12 color_black" >Loại phòng</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" readonly [(ngModel)]="roomBookData.roomName">
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <label for="inputText" class="col-sm-12 color_black">Họ và tên</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" [(ngModel)]="roomBookData.fullName">
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <label for="inputText" class="col-sm-12 color_black">Số điện thoại</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" [(ngModel)]="roomBookData.phone">
+                        </div>
+                    </div>
+                    <div class="col-4 d-flex justify-content-evenly align-items-center fs-5" style="color: black;">
+                        <p><strong>Giá mỗi đêm:</strong></p>
+                        <p><strong>{{roomBookData.price}} VND</strong></p>
+                    </div>
+                    <div class="col-4 d-flex justify-content-evenly align-items-center fs-5" style="color: black;">
+                        <p><strong>Giờ nhận phòng:</strong></p>
+                        <p><strong>14:00</strong></p>
+                    </div>
+                    <div class="col-4 d-flex justify-content-evenly align-items-center fs-5" style="color: black;">
+                        <strong>
+                            <p>Giờ trả phòng:</p>
+                        </strong>
+                        <strong>
+                            <p>12:00</p>
+                        </strong>
+                    </div>
+                    <div class="col-12 d-flex justify-content-evenly">
+                        <h4 style="color: black;">{{roomBookData.roomName}} ({{totalNight}} đêm) </h4>
+                        <h3 style="color: red;" >{{totalNight * roomBookData.price}} VND</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" style="background-color: black; color: white;" (click)="createBill()">Đặt phòng</button>
+            </div>
+        </div>
+    </div>
+</div>

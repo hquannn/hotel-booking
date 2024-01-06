@@ -1,0 +1,103 @@
+<header id="header" class="header d-flex align-items-center fixed-top">
+  <div class="container-fluid d-flex align-items-center justify-content-between">
+
+    <a routerLink='/' class="logo d-flex align-items-center  me-auto me-lg-0">
+      <img src="../../assets/logoWhite.svg" alt="" style="width: 40px; height: 40px;">
+      <h1>KBooking</h1>
+    </a>
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a routerLink="" (click)="KtraKhachSan()">Đặt phòng</a></li>
+        <li><a routerLink="">Về chúng tôi</a></li>
+        <li class="dropdown"><a routerLink=""><span>Địa điểm</span> <i
+              class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <ul>
+            <li><a routerLink="">Bãi biển</a></li>
+            <li><a routerLink="">Cắm trại</a></li>
+            <li><a routerLink="">Nghỉ dưỡng</a></li>
+            <li><a routerLink="">Bãi biển</a></li>
+            <li class="dropdown"><a routerLink=""><span>Thành phố</span> <i
+                  class="bi bi-chevron-down dropdown-indicator"></i></a>
+              <ul>
+                <li><a routerLink="">Hà Nội</a></li>
+                <li><a routerLink="">Hải Phòng</a></li>
+                <li><a routerLink="">Cát Bà</a></li>
+                <li><a routerLink="">Quảng Ninh</a></li>
+                <li><a routerLink="">Sầm Sơn</a></li>
+                <li><a routerLink="">Cửa Lò</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a routerLink="">Dịch Vụ</a></li>
+        <li><a routerLink="">Liên Hệ</a></li>
+        <li class="dropdown" *ngIf="dataAccount.role === 1"><a routerLink=""><span>Quản lý</span> <i
+              class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <ul>
+            <li><a class="dropdown-item" routerLink="ManageAccount">Quản lý tài khoản</a></li>
+            <li><a class="dropdown-item" routerLink="Room">Quản lý phòng</a></li>
+            <li><a class="dropdown-item" routerLink="Hotel">Quản lý chi nhánh</a></li>
+            <li><a class="dropdown-item" routerLink="ManageRoomBook">Quản lý đơn đặt phòng</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav><!-- .navbar -->
+
+    <div class="dropdown d-flex justify-content-end align-items-center" style="max-width: 20%;" dropdown
+      *ngIf="isLogin">
+      <img src="{{dataAccount.image ||'../../assets/user.png'}}" alt="" style="width: 10%; border-radius: 20%;">
+      <a class="dropdown-toggle  text-light ms-2" style="text-decoration: none;" data-bs-toggle="dropdown"
+        aria-expanded="false">{{dataAccount.fullName | titlecase}}</a>
+
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" routerLink="InforMation">Thông tin</a></li>
+        <li><a class="dropdown-item" routerLink="/">Đơn đặt phòng</a></li>
+        <li><a class="dropdown-item" routerLink="" (click)="logout()">Đăng xuất</a></li>
+      </ul>
+
+    </div>
+
+    <button class="btn btn-light" *ngIf="!isLogin" style="opacity: .7;" data-bs-toggle="modal"
+      data-bs-target="#exampleModal">Đăng Nhập</button>
+
+  </div>
+</header>
+
+
+<div class="modal fade" id="exampleModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" id="close_modal" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" style="color: black;">Đăng nhập</p>
+        <form class="mx-1 mx-md-4">
+          <div class="row g-3">
+            <div class="col-12">
+              <div class="form-floating mb-2">
+                <input type="text" class="form-control" name="Email" placeholder="Email" [(ngModel)]="email">
+                <label style="color: black;">Email</label>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="form-floating mb-2">
+                <input type="password" class="form-control" name="Mật khẩu" placeholder="Mật khẩu"
+                  [(ngModel)]="passWord">
+                <label style="color: black;">Mật khẩu</label>
+              </div>
+            </div>
+
+          </div>
+          <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+            <button class="btn btn-light btn-smal" (click)="login()">Đăng nhập</button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,108 @@
+
+<div class="w-100 d-flex justify-content-center">
+    <div class="card w-75">
+        <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <h3>Phòng Khách Sạn</h3>
+                <button class="btn btn-success" (click)=" showModal()">Thêm phòng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="gallery" class="gallery">
+    <div class="container-fluid">
+        <div class="row gy-4 justify-content-center">
+            <div class="col-xl-3 col-lg-4 col-md-6" *ngFor="let item of listData">
+                <div class="card p-1">
+                    <div class="gallery-item h-100">
+                        <img src='../../assets/roomImage/room1.jpg' class="img-fluid w-100" alt=""
+                            style="object-fit: cover; height: 194px;">
+                        <div class="gallery-links d-flex align-items-center justify-content-center">
+                        </div>
+                    </div>
+                    <h4>{{item.roomName}}</h4>
+                    <div class="row">
+                        <div class="col-12">
+                            <p>Loại giường: {{item.roomBedType}}</p>
+                        </div>
+                        <div class="col-12">
+                            <p>Diện tích phòng: {{item.roomSize}} m2</p>
+                        </div>
+                        <div class="col-12">
+                            <p>Sức chứa: {{item.roomCapacity}} người</p>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-evenly">
+                        <button class="btn btn-success" (click)="getByRoomData(item)"><i class="bi bi-pencil-square"></i> Sửa</button>
+                        <button class="btn btn-danger" (click)="deleteRoom(item.id)"><i class="bi bi-trash"></i> Xóa</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true" style="color: black;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
+                <button type="button" class="btn-close" (click)="closeModal()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-6">
+                        <label for="floatingName">Tên phòng</label>
+                        <input type="text" class="form-control" id="floatingName" placeholder="Tên phòng"
+                            name="RoomName" [(ngModel)]="dataRoom.roomName">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="floatingName">Loại giường</label>
+                        <select class="form-select" aria-label="Default select example" [(ngModel)]="dataRoom.roomBedType">
+                            <option value="" selected hidden>Chọn loại giường</option>
+                            <option value="Đơn">Đơn</option>
+                            <option value="Đôi">Đôi</option>
+                            <option value="Ba">Ba</option>
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <label for="floatingName">Diện tích phòng</label>
+                        <input type="number" class="form-control" id="floatingName" placeholder="Diện tích phòng"
+                            name="roomSize" [(ngModel)]="dataRoom.roomSize">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="floatingName">Sức chứa</label>
+                        <input type="number" class="form-control" id="floatingName" placeholder="Sức chứa"
+                            name="roomCapacity" [(ngModel)]="dataRoom.roomCapacity">
+                    </div>
+
+                    <div class="col-12">
+                        <label for="floatingName">Mô tả phòng</label>
+                        <textarea type="number" class="form-control" id="floatingName" placeholder="Mô tả phòng"
+                            name="roomCapacity" [(ngModel)]="dataRoom.roomDescription"> </textarea>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row w-100">
+                    <div class="col-6">
+                        <button type="button" class="btn btn-danger" *ngIf="dataRoom.id > 0">Xóa</button>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end">
+                        <button type="button" class="btn btn-success me-1" (click)="createOrUpdateRoom()">Lưu</button>
+                        <button type="button" class="btn btn-secondary" (click)="closeModal()">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

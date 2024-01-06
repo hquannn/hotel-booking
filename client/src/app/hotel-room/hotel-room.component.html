@@ -1,0 +1,117 @@
+
+<div class="w-100 d-flex justify-content-center">
+    <div class="card w-75">
+        <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <h3>Phòng Chi Nhánh</h3>
+                <button class="btn btn-success" (click)=" showModal()">Thêm phòng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="gallery" class="gallery">
+    <div class="container-fluid">
+        <div class="row gy-4">
+            <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let item of listData">
+                <div class="card p-1">
+                    <div class="gallery-item h-100">
+                        <img src='{{item.image || "../../assets/roomImage/room1.jpg"}}' class="img-fluid w-100" alt=""
+                            style="object-fit: cover; height: 194px;">
+                        <div class="gallery-links d-flex align-items-center justify-content-center">
+                        </div>
+                    </div>
+                    <h4>{{item.roomName}}</h4>
+                    <div class="row">
+                        <div class="col-6">
+                            <p>Loại giường: {{item.roomBedType}}</p>
+                        </div>
+                        <div class="col-6">
+                            <p>Diện tích phòng: {{item.roomSize}} m2</p>
+                        </div>
+                        <div class="col-6">
+                            <p>Sức chứa: {{item.roomCapacity}} người</p>
+                        </div>
+                        <div class="col-6">
+                            <p>Trạng thái: {{item.isActive ? "Còn phòng" : "Hết phòng"}}</p>
+                        </div>
+                        <div class="col-12">
+                            <h3>Giá phòng: {{item.price}} VND</h3>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-evenly">
+                        <button class="btn btn-success" (click)="getByRoomData(item)"><i class="bi bi-pencil-square"></i> Sửa</button>
+                        <button class="btn btn-danger" (click)="deleteRoom(item.id)"><i class="bi bi-trash"></i> Xóa</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true" style="color: black;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
+                <button type="button" class="btn-close" (click)="closeModal()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+
+                    <div class="col-12">
+                        <label for="floatingName1">Loại phòng:</label>
+                        <select class="form-select" aria-label="Default select example" [(ngModel)]="dataRoom.roomId">
+                            <option value="0" selected hidden>Chọn loại phòng</option>
+                            <option *ngFor="let item of listRoom" value="{{item.id}}">{{item.roomName}}</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label for="floatingName1">Giá phòng:</label>
+                        <input type="number" class="form-control" id="floatingName1" placeholder="Diện tích phòng"
+                            name="roomSize" [(ngModel)]="dataRoom.price">
+                    </div>
+
+                    <div class="col-12">
+                        <label for="floatingName1">Loại phòng:</label>
+                        <select class="form-select" aria-label="Default select example" [(ngModel)]="dataRoom.isActive">
+                            <option value="true">Còn phòng</option>
+                            <option value="false">Hết phòng</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="col-12 mt-3">
+                            <div class="container" style="width: 200px; border: solid 1px;">
+                                <img src="{{dataRoom.image || '../../assets/roomImage/room1.jpg'}}" alt="Image mt-2"
+                                    class="image" style="width: 100%;">
+
+                            </div>
+                        </div>
+                        <div class="col-12 mt-2 d-flex justify-content-center">
+                            <div class="col-6 ">
+                                <input class="form-control" type="file" id="formFileMultiple"
+                                    accept=".png,.jpg,.jpeg" (change)="onselectionFile($event)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row w-100">
+                    <div class="col-6">
+                        <button type="button" class="btn btn-danger" *ngIf="dataRoom.id > 0">Xóa</button>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end">
+                        <button type="button" class="btn btn-success me-1" (click)="createOrUpdateRoom()">Lưu</button>
+                        <button type="button" class="btn btn-secondary" (click)="closeModal()">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
