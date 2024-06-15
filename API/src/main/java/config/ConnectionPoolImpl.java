@@ -32,11 +32,11 @@ public class ConnectionPoolImpl implements ConnectionPool {
 		}
 		
 		//xác định đường dẫn
-		this.url = "jdbc:mysql://localhost:3306/it6020003_data_btl?characterEncoding=UTF-8";
+		this.url = "jdbc:mysql://localhost:3306/hotel";
 		
 		//Xác định tài khoản 
-		this.username = "khoi";
-		this.userpass = "Leminhkhoi2003";
+		this.username = "it6020002_quandbh";
+		this.userpass = "123456";
 		
 //		ArrayList<Connection> pool = new ArrayList<>();
 		// kỹ thuật upcasting

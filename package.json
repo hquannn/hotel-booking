@@ -1,0 +1,8 @@
+{
+    "dependencies": {
+      "bootstrap": "^5.3.3",
+      "force": "^0.0.3",
+      "mime": "^2.0.3"
+    }
+}
+  

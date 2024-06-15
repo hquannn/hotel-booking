@@ -17,6 +17,7 @@ import { HotelRoomComponent } from './hotel-room/hotel-room.component';
 import { HotellDetailsComponent } from './hotell-details/hotell-details.component';
 import { BookingComponent } from './booking/booking.component';
 import { ManageRoomBookComponent } from './manage-room-book/manage-room-book.component';
+import { DestinationComponent } from './destination/destination.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { ManageRoomBookComponent } from './manage-room-book/manage-room-book.com
     HotelRoomComponent,
     HotellDetailsComponent,
     BookingComponent,
-    ManageRoomBookComponent
+    ManageRoomBookComponent,
+    DestinationComponent
   ],
   imports: [
     BrowserModule,

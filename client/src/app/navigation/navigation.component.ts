@@ -87,5 +87,4 @@ export class NavigationComponent implements OnInit {
       this.router.navigateByUrl('Booking');
     }
   }
-
 }
