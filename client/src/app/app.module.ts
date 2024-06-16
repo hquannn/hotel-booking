@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,6 +17,7 @@ import { HotellDetailsComponent } from './hotell-details/hotell-details.componen
 import { BookingComponent } from './booking/booking.component';
 import { ManageRoomBookComponent } from './manage-room-book/manage-room-book.component';
 import { DestinationComponent } from './destination/destination.component';
+import { ServiceComponent } from './service/service.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +33,8 @@ import { DestinationComponent } from './destination/destination.component';
     HotellDetailsComponent,
     BookingComponent,
     ManageRoomBookComponent,
-    DestinationComponent
+    DestinationComponent,
+    ServiceComponent
   ],
   imports: [
     BrowserModule,
