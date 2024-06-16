@@ -18,6 +18,7 @@ import { BookingComponent } from './booking/booking.component';
 import { ManageRoomBookComponent } from './manage-room-book/manage-room-book.component';
 import { DestinationComponent } from './destination/destination.component';
 import { ServiceComponent } from './service/service.component';
+import { LocationComponent } from './location/location.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { ServiceComponent } from './service/service.component';
     BookingComponent,
     ManageRoomBookComponent,
     DestinationComponent,
-    ServiceComponent
+    ServiceComponent,
+    LocationComponent
   ],
   imports: [
     BrowserModule,
