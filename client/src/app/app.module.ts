@@ -16,7 +16,6 @@ import { HotelRoomComponent } from './hotel-room/hotel-room.component';
 import { HotellDetailsComponent } from './hotell-details/hotell-details.component';
 import { BookingComponent } from './booking/booking.component';
 import { ManageRoomBookComponent } from './manage-room-book/manage-room-book.component';
-import { DestinationComponent } from './destination/destination.component';
 import { ServiceComponent } from './service/service.component';
 import { LocationComponent } from './location/location.component';
 @NgModule({
@@ -34,7 +33,6 @@ import { LocationComponent } from './location/location.component';
     HotellDetailsComponent,
     BookingComponent,
     ManageRoomBookComponent,
-    DestinationComponent,
     ServiceComponent,
     LocationComponent
   ],
