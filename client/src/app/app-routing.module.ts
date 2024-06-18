@@ -12,7 +12,6 @@ import { HotelRoomComponent } from './hotel-room/hotel-room.component';
 import { HotellDetailsComponent } from './hotell-details/hotell-details.component';
 import { BookingComponent } from './booking/booking.component';
 import { ManageRoomBookComponent } from './manage-room-book/manage-room-book.component';
-import { DestinationComponent } from './destination/destination.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -27,7 +26,6 @@ const routes: Routes = [
   {path: "HotelRoom/:id", component: HotelRoomComponent},
   {path: "Booking", component: BookingComponent},
   {path: "ManageRoomBook", component: ManageRoomBookComponent},
-  {path: "Destination", component: DestinationComponent}
 ];
 
 @NgModule({
