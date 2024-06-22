@@ -10,6 +10,9 @@ declare var $: any;
 })
 export class NavigationComponent implements OnInit {
 
+  //check if user is admin
+  isAdmin: boolean=false;
+
   email: string = "";
   passWord: string = "";
   dataAccount: Account = {
@@ -50,7 +53,15 @@ export class NavigationComponent implements OnInit {
         localStorage.setItem('user', JSON.stringify(res));
         this._serviceAccount.setCurrentUser(res);
         $('#close_modal').click();
+
+        //check if user is admin
+        this.isAdmin = this.dataAccount.role === 0;
+
+        localStorage.setItem('user', JSON.stringify(res));
+        this._serviceAccount.setCurrentUser(res);
+        $('#close_modal').click();
       }
+
     },
       error => {
         alert("Lỗi kết nối!");

@@ -12,6 +12,7 @@ import { HotelRoomComponent } from './hotel-room/hotel-room.component';
 import { HotellDetailsComponent } from './hotell-details/hotell-details.component';
 import { BookingComponent } from './booking/booking.component';
 import { ManageRoomBookComponent } from './manage-room-book/manage-room-book.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -19,13 +20,14 @@ const routes: Routes = [
   {path:"location", component: LocationComponent},
   {path: "Register", component: RegisterUserComponent},
   {path: "InforMation", component: InformationAccountComponent},
-  {path: "ManageAccount", component: ManageAccountComponent},
-  {path: "Hotel", component: HotelComponent},
+  {path: "admin/ManageAccount", component: ManageAccountComponent},
+  {path: "admin/Hotel", component: HotelComponent},
   {path: "Hotel/:id", component: HotellDetailsComponent},
-  {path: "Room", component: RoomComponent},
+  {path: "admin/Room", component: RoomComponent},
   {path: "HotelRoom/:id", component: HotelRoomComponent},
   {path: "Booking", component: BookingComponent},
-  {path: "ManageRoomBook", component: ManageRoomBookComponent},
+  {path: "admin/ManageRoomBook", component: ManageRoomBookComponent},
+  {path: "admin", component: AdminComponent}
 ];
 
 @NgModule({
