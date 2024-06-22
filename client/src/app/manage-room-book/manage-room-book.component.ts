@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoomBookService } from '../_service/room-book.service';
+import { EmailService } from '../_service/email.service'; // Adjust the path accordingly
+
 import { RoomBook } from '../_model/room_book';
 import { RoomBookData } from '../_model/room_book_data';
 declare var $:any;
@@ -25,7 +27,10 @@ export class ManageRoomBookComponent implements OnInit {
     accountId: 0,
   };
 
-  constructor(private _service: RoomBookService){}
+  constructor(
+    private _service: RoomBookService,
+    private _emailService: EmailService
+  ){}
   ngOnInit(): void {
     this.getAll();
   }
@@ -67,20 +72,34 @@ export class ManageRoomBookComponent implements OnInit {
       totalPrice:0,
       accountId: 0
     };
-    if(check){
-      this.data.status ="Đã xác nhận"
+    if (check) {
+      this.data.status = "Đã xác nhận";
+    } else {
+      if (!confirm("Bạn có chắc muốn hủy đơn đặt phòng này?")) return;
+      this.data.status = "Từ chối";
     }
-    else{
-      if(!confirm("Bạn có chắc muốn hủy đơn đặt phòng này?")) return;
-      this.data.status ="Từ chối"
-    }
-    
+
     this._service.updateStatus(this.data).subscribe(res => {
       alert("Thành công!");
       this.getAll();
+      // Prepare email data
+      const emailData = {
+        // to: this.data.email, // The user's email
+        subject: `Booking Status Updated: ${this.data.status}`,
+        message: `Dear ${this.data.fullName},<br>Your booking status has been updated to: ${this.data.status}.`
+      };
+      // Send email
+      this._emailService.sendEmail(emailData).subscribe(
+        (response: any) => {
+          console.log("Email sent successfully.");
+        },
+        (error: any) => {
+          console.error("Error sending email:", error);
+        }
+      );
     }, error => {
-      alert("Đã xảy ra lỗi gì đó! Hãy kiểm tra lại đường truyền!")
-    })
+      alert("Đã xảy ra lỗi gì đó! Hãy kiểm tra lại đường truyền!");
+    });
   }
 
   
