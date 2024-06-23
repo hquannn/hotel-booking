@@ -27,4 +27,7 @@ export class RoomBookService {
     let _url = this.apiUrl + "RoomBook";
     return this.http.post(_url, data); 
   }
+
+  
 } 
+

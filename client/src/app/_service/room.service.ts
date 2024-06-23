@@ -35,4 +35,6 @@ export class RoomService {
     _url = _url.replace(/[?&]$/, "");
     return this.http.delete(_url);
   }
+
+  
 }

@@ -18,6 +18,9 @@ import { BookingComponent } from './booking/booking.component';
 import { ManageRoomBookComponent } from './manage-room-book/manage-room-book.component';
 import { ServiceComponent } from './service/service.component';
 import { LocationComponent } from './location/location.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +37,7 @@ import { LocationComponent } from './location/location.component';
     BookingComponent,
     ManageRoomBookComponent,
     ServiceComponent,
-    LocationComponent
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,8 +45,11 @@ import { LocationComponent } from './location/location.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    
   ],
+  
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }

@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { RoomBookService } from '../_service/room-book.service';
 import { EmailService } from '../_service/email.service'; // Adjust the path accordingly
-
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
 import { RoomBook } from '../_model/room_book';
 import { RoomBookData } from '../_model/room_book_data';
+
 declare var $:any;
 @Component({
   selector: 'app-manage-room-book',
@@ -11,6 +13,8 @@ declare var $:any;
   styleUrls: ['./manage-room-book.component.css']
 })
 export class ManageRoomBookComponent implements OnInit {
+
+
   request: string = "";
   listData: RoomBookData[] | undefined;
   data: RoomBook = {
@@ -43,9 +47,11 @@ export class ManageRoomBookComponent implements OnInit {
         result.checkIn = new Date(result.checkIn).toLocaleDateString()
         result.checkOut = new Date(result.checkOut).toLocaleDateString()
       })
-      
+     
     })
   }
+
+
 
   search(event?: any) {
     if (event) {
@@ -85,8 +91,8 @@ export class ManageRoomBookComponent implements OnInit {
       // Prepare email data
       const emailData = {
         // to: this.data.email, // The user's email
-        subject: `Booking Status Updated: ${this.data.status}`,
-        message: `Dear ${this.data.fullName},<br>Your booking status has been updated to: ${this.data.status}.`
+        subject: `Booking confirmed ${this.data.status}`,
+        message: `Dear ${this.data.fullName},<br>You have confirmed your booking.`
       };
       // Send email
       this._emailService.sendEmail(emailData).subscribe(
@@ -102,5 +108,43 @@ export class ManageRoomBookComponent implements OnInit {
     });
   }
 
+  exportToExcel(): void {
+    const header = ['Họ tên', 'Điện thoại', 'Ngày nhận', 'Ngày trả', 'Tên khách sạn', 'Loại phòng', 'Đơn giá', 'Tổng tiền', 'Trạng thái'];
+
+    const data = this.listData?.map(item => ({
+      'Họ tên': item.fullName,
+      'Điện thoại': item.phone,
+      'Ngày nhận': item.checkIn,
+      'Ngày trả': item.checkOut,
+      'Tên khách sạn': item.hotelName,
+      'Loại phòng': item.roomName,
+      'Đơn giá': item.price,
+      'Tổng tiền': item.totalPrice,
+      'Trạng thái': item.status
+    })) || [];
+
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data, { header });
+    const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+
+    const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    this.saveAsExcelFile(excelBuffer, 'roombook');
+  }
+
+  private saveAsExcelFile(buffer: any, fileName: string): void {
+    const data: Blob = new Blob([buffer], { type: 'application/octet-stream' });
+    saveAs(data, `${fileName}_${new Date().getTime()}.xlsx`);
+  }
   
+  showModal: boolean= false;
+  openModal() {
+    this.showModal = true;
+    
+  }
+  
+  closeModal() {
+    this.showModal = false;
+    
+  }
 }
+
+

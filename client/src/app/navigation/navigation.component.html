@@ -35,6 +35,7 @@
         <li class="dropdown" *ngIf="dataAccount.role === 1"><a routerLink="ManageAccount"><span>Quản lý</span> <i
               class="bi bi-chevron-down dropdown-indicator"></i></a>
           <ul>
+            <li><a class="dropdown-item" routerLink="Dashboard">Dashboard</a></li>
             <li><a class="dropdown-item" routerLink="ManageAccount">Quản lý tài khoản</a></li>
             <li><a class="dropdown-item" routerLink="Room">Quản lý phòng</a></li>
             <li><a class="dropdown-item" routerLink="Hotel">Quản lý chi nhánh</a></li>
@@ -45,7 +46,8 @@
 
       </ul>
 
-    </nav><!-- .navbar -->
+    </nav>
+    <!-- .navbar -->
     <!-- <a *ngIf="dataAccount.role !== 1" routerLink="" (click)="KtraKhachSan()">Đặt phòng</a> -->
 
 
