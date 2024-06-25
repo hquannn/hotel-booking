@@ -1,0 +1,11 @@
+<div class="chatbot-container">
+  <h2>Chatbot</h2>
+  <div>
+    <input [(ngModel)]="userMessage" placeholder="Type your message here..." />
+    <button (click)="sendMessage()">Send</button>
+  </div>
+  <div *ngIf="responseMessage">
+    <h3>Response:</h3>
+    <p>{{ responseMessage }}</p>
+  </div>
+</div>
