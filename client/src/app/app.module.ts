@@ -36,8 +36,7 @@ import { ChatbotComponent } from './chatbot/chatbot.component';
     BookingComponent,
     ManageRoomBookComponent,
     ServiceComponent,
-    LocationComponent,
-    ChatbotComponent,
+    LocationComponent
   ],
   imports: [
     BrowserModule,
