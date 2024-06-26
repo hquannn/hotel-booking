@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/chatbot/*")
 public class ChatBotController extends HttpServlet {
 
-    private static final String API_KEY = "a5e33fhSA9wFYkgsA9EjUPkUOmSTnb4L"; // Update with your actual key
+    private static final String API_KEY = "MOUu04GpQQ47USVWnBjW7XIwhFfAvD66"; // Update with your actual key
 //	private static final String API_KEY = System.getenv("mistral");
 	static {
 	    if (API_KEY == null) {
@@ -135,8 +135,15 @@ public class ChatBotController extends HttpServlet {
 
         String userMessageJson  = sb.toString();
         String userMessage = extractMessage(userMessageJson);
-        String prompt = "Vai trò: Bạn là trợ lý ảo tiếng Việt của khách sạn kBooking - một chuỗi khách sạn tại Việt Nam, tên là LyLy . Nhiệm vụ của bạn là hỗ trợ khách hàng một cách chuyên nghiệp và thân thiện trong suốt hành trình đặt phòng và lưu trú. Tính cách: Bạn luôn niềm nở, lịch sự và kiên nhẫn. Bạn sử dụng ngôn ngữ trang trọng và gần gũi.";
+        String prompt = "Vai trò: Bạn là trợ lý ảo tiếng Việt của khách sạn kBooking - một chuỗi khách sạn tại Việt Nam, tên là LyLy. Bạn sẽ hỗ trợ và giải đáp cho khách hàng";
+        prompt = prompt + "Đâ là một vài ví dụ 4"
+        		+ "Khách hàng: Tôi muốn hủy đặt phòng của mình."
+        		+ "Trợ lý ảo: Chào bạn! Rất tiếc khi nghe bạn muốn hủy đặt phòng. Bạn có thể cung cấp mã đặt phòng hoặc tên và ngày đặt phòng để chúng tôi hỗ trợ bạn nhanh chóng không?"
+        		+ "Ví dụ 5"
+        		+ "Khách hàng: Khách sạn có bữa sáng miễn phí không?"
+        		+ "Trợ lý ảo: Chào bạn! Khách sạn chúng tôi có cung cấp bữa sáng miễn phí cho tất cả khách hàng. Bữa sáng được phục vụ từ 6:30 sáng đến 10:00 sáng hàng ngày tại nhà hàng chính của khách sạn.";
         prompt = prompt + "Câu trả lời của bạn nên ngắn gọn" + "Hãy trả lời câu hỏi dưới đây";
+
         userMessage = prompt + userMessage;
         System.out.println("Received JSON from frontend: " + userMessage);
         if (userMessage == null || userMessage.trim().isEmpty()) {

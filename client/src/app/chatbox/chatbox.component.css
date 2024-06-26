@@ -136,8 +136,8 @@ body {
 }
 .chat-button {
     padding: 25px 16px;
-    background: #2C50EF;
-    width: 120px;
+    background: #198754;
+    width: 160px;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -152,7 +152,7 @@ body {
     content: "";
     height: 15px;
     width: 15px;
-    background: #47cf73;
+    background: #000000;
     position: absolute;
     transform: translate(0, -7px);
     border-radius: 15px;
