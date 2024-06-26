@@ -1479,9 +1479,9 @@
 }
 
 .chat-button {
-    padding: 25px 16px;
-    background: #2C50EF;
-    width: 120px;
+    padding: 20px 16px;
+    background: #27a776;
+    width: 200px;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -1495,7 +1495,7 @@
     content: "";
     height: 15px;
     width: 15px;
-    background: #47cf73;
+    background: #2010fa;
     position: absolute;
     transform: translate(0, -7px);
     border-radius: 15px;

@@ -1,0 +1,32 @@
+﻿
+/*Các xử lý định dạng cho body*/
+body{
+	color: #444;
+	font-family: arial;
+	font-size: 16px;
+}
+
+.bg-full{
+	background: url('../Image/background.png');
+	background-size: cover;
+}
+
+.view{
+	width: 100%;
+	height: 80vh;
+	/*
+	border-width: 20px;
+	border-style: inset;
+	border-color: blue;
+	
+	gop 3 cai tren vao
+	*/
+	/*border: 20px inset blue;*/
+	border-top: 6px solid blue;
+	border-bottom: 6px inset orange;
+	
+	box-shadow: 4px 3px 5px #888;
+	
+	/* tt tp dp dt*/
+	border-radius: 0 20% 0 20%;
+}

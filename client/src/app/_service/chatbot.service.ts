@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ChatbotService {
-  private apiUrl = 'http://localhost:8080/API/chatbot'; // Adjust this if your backend is on a different endpoint
+  private apiUrl = 'http://localhost:8080/API/chatbot/TestBot'; // Adjust this if your backend is on a different endpoint
 
   constructor(private http: HttpClient) { }
 

@@ -19,6 +19,8 @@ import { ManageRoomBookComponent } from './manage-room-book/manage-room-book.com
 import { ServiceComponent } from './service/service.component';
 import { LocationComponent } from './location/location.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
+import { ChatboxComponent } from './chatbox/chatbox.component';
+
 // import { ChatbotService } from './chatbot.service';
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { ChatbotComponent } from './chatbot/chatbot.component';
     ManageRoomBookComponent,
     ServiceComponent,
     LocationComponent,
-    ChatbotComponent
+    ChatbotComponent,
+    ChatboxComponent
   ],
   imports: [
     BrowserModule,

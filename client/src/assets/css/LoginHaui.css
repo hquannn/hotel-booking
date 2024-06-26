@@ -1,0 +1,31 @@
+
+/*Các xử lý định dạng cho body*/
+body{
+	background: #f8f8f8;
+	color: #444;
+	font-family: arial;
+	font-size: 16px;
+}
+
+.view{
+	background-color: #fff;
+	font-size: 16px;
+	width: 400px;
+	height: 400px;
+	
+	margin:auto;
+	margin-top: 10vh;
+	border-top: 3px solid blue;
+	
+	/* tt tp dp dt*/
+	border-radius: 1%;
+	
+	text-align: center;
+}
+
+#login11{
+	margin:auto;
+	margin: 30px 20px;
+	line-height: 1.8;
+}
+

@@ -1,0 +1,39 @@
+﻿
+
+/*Các xử lý định dạng cho body*/
+body{
+	color: #444;
+	font-family: arial;
+	font-size: 16px;
+}
+
+.view{
+	width: 100%;
+	height: 60vh;
+	/*
+	border-width: 20px;
+	border-style: inset;
+	border-color: blue;
+	
+	gop 3 cai tren vao
+	*/
+	/*border: 20px inset blue;*/
+	border-top: 2px solid blue;
+	border-bottom: 2px inset orange;
+	
+	box-shadow: 4px 3px 5px #888;
+	
+	/* tt tp dp dt*/
+	border-radius: 2%;
+	
+}
+
+.view2{
+	text-align: center;
+	margin-top:30px;
+	
+}
+
+#formLogin{
+	padding: 40px 30px;
+}	

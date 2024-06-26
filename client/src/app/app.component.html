@@ -6,8 +6,12 @@
 <div class="container" [ngStyle]="{ 'margin-top': showNavigationAndFooter ? '100px' : '0' }">
       <router-outlet></router-outlet>
 </div>
-<app-chatbot></app-chatbot>      
+<app-chatbox></app-chatbox>
+
+<app-chatbot></app-chatbot>  
+
 <ng-container *ngIf="showNavigationAndFooter">
+
 <app-footer></app-footer>
 
 </ng-container>

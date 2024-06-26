@@ -1,0 +1,26 @@
+<div class="chat-box" [ngClass]="{'visible': isChatboxVisible}">
+    <div class="chat-box-header">
+        <h3>Message Us</h3>
+        <p (click)="toggleChatbox()"><i class="fas fa-times"></i></p>
+    </div>
+    <div class="chat-box-body">
+        <div *ngFor="let message of messages">
+            <div [ngClass]="{'chat-box-body-send': message.sender === 'user', 'chat-box-body-receive': message.sender === 'bot'}">
+                <p>{{ message.text }}</p>
+                <span>{{ message.timestamp | date:'shortTime' }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="chat-box-footer">
+        <button id="addExtra" (click)="toggleModal()"><i class="fas fa-plus"></i></button>
+        <input [(ngModel)]="userMessage" placeholder="Enter Your Message" type="text" (keyup.enter)="sendMessage()" />
+        <i class="send fas fa-paper-plane" (click)="sendMessage()"></i>
+    </div>
+</div>
+<div class="chat-button" (click)="toggleChatbox()"><span></span></div>
+<div class="modal" [ngClass]="{'show-modal': isModalVisible}" (click)="toggleModal()">
+    <div class="modal-content" (click)="preventClose($event)">
+        <span class="modal-close-button" (click)="toggleModal()">&times;</span>
+        <h1>Add What you want here.</h1>
+    </div>
+</div>
