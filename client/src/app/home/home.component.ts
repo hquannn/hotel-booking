@@ -21,17 +21,22 @@ export class HomeComponent {
 
   onSubmit(form: NgForm) {
     if (form.valid) {
+      console.log('Form is valid', this.contact);
       let _url = this.apiUrl + "Contact/sendEmail";
       this.http.post(_url, this.contact, {
         headers: { 'Content-Type': 'application/json' }
       }).subscribe(
         response => {
+          console.log('Response:', response);
           alert('Your message has been sent. Thank you!');
         },
-        error => {
-          this.errorMessage = 'An error occurred while sending the message.';
-        }
+        // error => {
+        //   console.error('Error:', error);
+        //   this.errorMessage = 'An error occurred while sending the message.';
+        // }
       );
+    } else {
+      console.log('Form is invalid');
     }
   }
 }
