@@ -135,16 +135,7 @@ export class ManageRoomBookComponent implements OnInit {
     saveAs(data, `${fileName}_${new Date().getTime()}.xlsx`);
   }
   
-  showModal: boolean= false;
-  openModal() {
-    this.showModal = true;
-    
-  }
-  
-  closeModal() {
-    this.showModal = false;
-    
-  }
+
 }
 
 
